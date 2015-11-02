@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+	<channel>
+		
+		<title>Example Feed</title>
+		<description>Creative Tier example feed</description>
+		<link>http://www.creativetier.com</link>
+		<lastBuildDate></lastBuildDate>
+		<managingEditor>contact@creativetier.com</managingEditor>
+		
+		<item>
+			<title>News 1 news 1 news 1 news 1 news 1</title>
+			<link>http://www.creativetier.com</link>
+			<guid isPermaLink="false"></guid>
+			<pubDate></pubDate>
+			<description>Description text</description>
+		</item>
+		
+		<item>
+			<title>News 2 news 2 news 2 news 2 news 2</title>
+			<link>http://www.creativetier.com</link>
+			<guid isPermaLink="false"></guid>
+			<pubDate></pubDate>
+			<description>Description text</description>
+		</item>
+		
+		<item>
+			<title>News 3 news 3 news 3 news 3 news 3</title>
+			<link>http://www.creativetier.com</link>
+			<guid isPermaLink="false"></guid>
+			<pubDate></pubDate>
+			<description>Description text</description>
+		</item>
+		
+		<item>
+			<title>News 4 news 4 news 4 news 4 news 4</title>
+			<link>http://www.creativetier.com</link>
+			<guid isPermaLink="false"></guid>
+			<pubDate></pubDate>
+			<description>Description text</description>
+		</item>
+		
+		<item>
+			<title>News 5 news 5 news 5 news 5 news 5</title>
+			<link>http://www.creativetier.com</link>
+			<guid isPermaLink="false"></guid>
+			<pubDate></pubDate>
+			<description>Description text</description>
+		</item>
+		
+	</channel>
+</rss>

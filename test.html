@@ -1,0 +1,316 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">  
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  
+  
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="css/jquery.smarticker.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	
+	 
+	<script type="text/javascript" src="js/jquery.animate.colors.min.js"></script>
+	<script type="text/javascript" src="js/jquery.smarticker.min.js"></script>
+	
+	
+	
+	 
+  
+
+  <script type="text/javascript">
+  
+ $(document).ready(function() { 
+ 
+ 
+	// Load Blog / Twitter Files
+	
+	
+	var rssdetail = [];
+	var rssDetailName = [];
+	
+	 var strFileName;
+	 strFileName="files/json/allfeedsbinfeed.json";	 
+	 LoadArray(strFileName );
+	 
+	 strFileName="files/json/allfeedsbindetail.json";	 
+	 GetRSSDetail(strFileName );
+	 
+	 
+	 
+	
+	function LoadArray(FileName) {
+	
+	
+	
+	 $.getJSON(FileName, function(result)
+		  
+			{
+				var strURL1;
+				var strURL2;
+				var strURL3;
+				var strURL4;
+				var arrayCount = 0;
+				
+				 
+					$.each(result, function(i, item) {
+					
+						//strURL1 = item.feed_id; 
+						//strURL2 = feed_id;
+						//strURL3 = feed_id;
+						//strURL4 = feed_id;
+						var tst=',';
+						
+						rssdetail[arrayCount] = item.feed_id;
+						rssDetailName[arrayCount] = item.title;
+						
+						arrayCount++;
+						
+						
+					});
+					
+					
+					 
+					
+			
+			
+			  
+				});
+		
+			}
+	
+	
+	
+	
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	 
+	
+	 
+	 
+	 
+	 function GetRSSDetail(FileName, column) {
+	 
+		  $.getJSON(FileName, function(result)
+		  
+			{
+				 
+				
+				var strURLDisplay="";
+				
+				 
+					$.each(result, function(i, item) {
+					
+						//strURL1 = item.feed_id; 
+						//strURL2 = feed_id;
+						//strURL3 = feed_id;
+						//strURL4 = feed_id;
+						var tst=',';
+						
+						//console.log(item.feed_id + "," + item.title) ;
+						
+						var strFeedName;
+						 
+						//for (var l = 0; l < rssDetailName.length; l++) {
+						
+							//console.log(item.feed_id + "," + item.title) ;	
+						
+							//if (item.feed_id == rssdetail[l]) {
+							//    strFeedName=rssDetailName[l];
+								strURLDisplay +='<li><a href="'  + item.url  + '">' + item.title + '</a></li>';
+								//console.log(strURLDisplay)
+							//	break;
+								//console.log(rssdetail[l] + item.feed_id);
+							//}
+						
+							
+					 
+						 //}
+						 
+						// console.log(strFeedName + item.title + item.url);
+						 
+						 	//<li><a href="#">News Title 1</a></li>
+						 
+						
+						
+						 
+					});
+					
+					console.log(strURLDisplay);
+					
+					 
+					
+					$('.smarticker3').append(strURLDisplay);	
+			
+			
+			  
+				});
+		
+			}
+					
+			
+			
+			
+				$('.smarticker3').smarticker({
+					theme: 4,
+					speed: 1500,
+					pausetime: 3600,
+					title: 'Latest News',
+					rounded: true,
+					animation: 'typing'
+				});
+				
+				
+				$('.smarticker3').smarticker();
+		
+	}); 
+  
+  
+  
+  
+  </script> 
+  
+  
+  
+  
+  
+</head>
+
+<body>
+
+<div class="container">
+		 
+		<div class="content border-top lightgray blue">
+			<div class="padding">
+				 
+
+				<div class="smarticker3">
+				
+				<ul>
+				
+
+<li><a href="http://www.reddit.com/r/webdev/comments/37c1fi/vibrantjs_extract_prominent_colors_from_an_image/">Vibrant.js: Extract prominent colors from an image.</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37c2kv/good_idea_for_hobby_project/">Good idea for hobby project?</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37c1n2/hiring_shopify_website_customization/">[Hiring] Shopify Website Customization</a></li>
+<li><a href="http://www.reddit.com/r/programming/comments/37c1tt/one_year_with_the_truly_ergonomic_keyboard/">One year with the Truly Ergonomic keyboard</a></li>
+<li><a href="http://www.reddit.com/r/webdev/comments/37c0i4/on_being_overwhelmed_with_our_fast_pace_industry/">On being overwhelmed with our fast pace industry</a></li>
+<li><a href="http://www.reddit.com/r/webdev/comments/37c11t/httpbin1_http_client_testing_service/">httpbin(1): HTTP Client Testing Service</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37c0l1/if_you_are_a_beginner_learning_programming_today/">If you are a beginner learning programming today, I would advise against using Udacity update 2 --- > SNAFU</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bz2s/c_requesting_a_very_simple_code_critique/">[C++] Requesting a (very simple) code critique</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bzmw/how_to_integrate_git_into_a_website_xpost_from/">How to integrate git into a website (Xpost from /r/webdev)</a></li>
+<li><a href="http://www.reddit.com/r/programming/comments/37bydh/the_responsibility_we_have_as_software_engineers/">The Responsibility We Have as Software Engineers</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37bzbm/getting_a_job_in_the_usa_with_j1_graduate_visa/">Getting a job in the USA with J1 Graduate Visa</a></li>
+<li><a href="http://www.overthemonster.com/2015/5/26/8660049/otm-fantasy-week-8">OTM Fantasy: Week 8</a></li>
+<li><a href="http://www.reddit.com/r/webdev/comments/37bywz/if_god_was_a_web_developer_and_he_used_a_js/">If God was a web developer, and he used a JS framework, what would it be like?</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bxxm/for_hire_back_end_developer_phpruby_columbus_oh/">[For Hire] Back End Developer, PHP/Ruby - Columbus, OH</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bycc/hiring_native_english_writers/">[Hiring] Native English Writers</a></li>
+<li><a href="http://www.reddit.com/r/programming/comments/37by6q/the_secret_of_how_to_get_a_qa_job_in_3_4_months/">The secret of how to get a QA job in 3 - 4 months.</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36abpi/my_first_meteor_app_what_are_your_thoughts_any/">My first Meteor app, what are your thoughts? Any feedback or idea is appreciated.</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/369s2y/favorite_meteor_tutorials/">Favorite Meteor Tutorials</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36g3s1/installing_a_meteor_application/">Installing a Meteor Application</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36hby3/single_page_vs_routing/">Single page vs routing?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36iruu/lf_package_to_allow_employee_login_via_pin/">LF: package to allow employee login via pin</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36h3rp/we_are_working_on_a_new_open_source_meteor/">We are working on a new open source Meteor Booking system. What do you think?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36i0ks/meteor_raises_20m_to_build_the_one_javascript/">Meteor Raises $20M To Build The One JavaScript Stack To Rule Them All</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36nsrf/the_meteor_cookbook/">The Meteor Cookbook</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36rkm9/what_would_your_meteor_syllabus_look_like/">What would your Meteor syllabus look like?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36ul4b/looking_for_someone_to_collaborate_with_2_small/">Looking for someone to collaborate with 2 small Telescope projects</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36yioi/basic_templating_question_about_headerfooter/">Basic templating question about header/footer</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36zm55/trouble_with_forms/">Trouble with forms.</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36zu5u/how_many_packages_is_too_many_packages/">How many packages is too many packages?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/36zqpx/what_is_the_best_way_to_handle_localized_strings/">What is the best way to handle localized strings in MeteorJS ?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/370w7j/problem_running_meteor_on_android/">Problem running meteor on android</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/3711oy/category_view_on_atmospherejs/">Category view on AtmosphereJS?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/374wjt/learning_meteor_on_windows/">Learning Meteor on Windows</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/374zk5/cannot_do_client_side_sorting_on_near_mongo_query/">Cannot do client side sorting on $near Mongo query</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/375pf8/to_remove_meteorid_or_not_remove_meteorid_to/">To remove .meteor/.id or not remove .meteor/.id (to create an app template), that is the question</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/3770w6/is_meteor_right_for_my_use_case/">Is meteor right for my use case ?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/378b61/how_to_create_a_package/">How to create a package?</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/378wx7/im_a_newbie_and_i_have_no_idea_how_to_actually/">I'm a newbie and I have no idea how to actually deploy my applications</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/379uxl/using_scoped_reactivevars_to_control_tab/">Using Scoped ReactiveVars to Control Tab Visibility (Meteor.js)</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/37a40t/first_meteor_app_inspired_wholly_by_discovermeteor/">First Meteor App, Inspired wholly by DiscoverMeteor</a></li>
+<li><a href="http://www.reddit.com/r/Meteor/comments/37b8vw/meteoricionicsass_package_scss_compiler_error/">meteoric:ionic-sass package - scss compiler error</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bf5c/my_first_program_review_my_code/">[My first program] Review my code</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bfiw/unity_what_is_the_most_effective_way_to_make_an/">[Unity] What is the most effective way to make an infinite runner (without using the character controller code)?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/379zg4/is_there_a_way_to_write_swift_code_on_ubuntu_or/">Is there a way to write Swift code on Ubuntu or windows?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/379th2/improving_programming_skills_through_unityunreal/">Improving programming skills through Unity/Unreal</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bgmk/pic_ascii_to_binary/">[PIC] ASCII to Binary</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bgpg/visual_basic_button_help/">Visual basic button help</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37b09l/im_looking_for_some_good_summer_reading_for/">I'm looking for some good summer reading for beginners. I just finished my first year of college as a computer science major. Any recommendations?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37biwr/automatahow_to_construct_a_dfa_for_the_language/">[Automata]How to construct a DFA for the language accepting strings with at least three a's and at least two b's?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bkqa/learning_project_stuck_with_an_request_handler/">Learning project, Stuck with an request handler.</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bl7k/c_reading_a_file_with_different_paths_user/">[C++] Reading a file with different Paths (User)</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37blo5/what_stylephilosophy_should_exactly_be_used_when/">What style/philosophy should exactly be used when developing with nodejs? (in the same way that, say, java favours object oriented programming)</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/379w6o/programming_languages_you_need_to_know_to_develop/">Programming languages you need to know to develop a game?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bmih/help_java_if_statement_returning_opposite_of_what/">[HELP - Java] if statement returning opposite of what I've written</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bqdx/java_set_message_on_error/">Java: Set Message on error</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bqh0/unique_it_thesis_topic/">Unique IT Thesis Topic</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bqna/helpjava_making_a_maze_game_dont_know_how_to/">[HELP][JAVA] Making a maze game, don't know how to implement KeyListener.</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bqr5/simple_imo_webbased_front_end_to_a_simple_db_for/">Simple (IMO) web-based front end to a simple db for use at work - I'm really lost with what the best path forward would be, please help me plot my course. (longwinded)</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/378bmo/put_your_programming_skills_to_the_test_in/">Put your programming skills to the test in BaconGameJam 09, coming up on 12th June</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bt7c/i_want_to_portforward_22_on_two_separate_devices/">I want to portforward 22 on two separate devices so I can SSH into them from outside network. How?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/377kj6/i_am_a_graduating_high_school_senior_interested/">I am a graduating high school senior interested in majoring in programming- what steps can I take to make sure I have the best chance of getting good grades and ultimately a good job?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/3782d1/i_created_a_study_guide_for_people_who_want_to/">I created a study guide for people who want to get started learning how to program in Swift.</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37abfp/why_does_rprogramming_seem_so_excited_about_rust/">Why does r/programming seem so excited about Rust? What is going to make this language so different/special from other popular languages? What niche is it trying to reach?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37bb7z/whats_your_least_favorite_part_of_programming/">What's your least favorite part of programming?</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/379vwn/visually_learning_algorithms/">Visually learning Algorithms</a></li>
+<li><a href="http://www.reddit.com/r/learnprogramming/comments/37b42h/my_first_year_and_a_half_as_a_professional/">My first year and a half as a professional software developer: what I expected and what I got</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/379gh3/hiring_an_illustrator_to_give_my_logo_a_facelift/">[HIRING] An illustrator to give my logo a facelift</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/379hj4/hiring_online_web_developer_for_esports/">[Hiring] (Online) Web Developer for Esports Organization</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/378xjf/for_hire_freelance_ios_developer_to_make_your_app/">[For Hire] Freelance iOS Developer To Make Your App</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/378q8m/for_hire_questionably_cheap_writer_whoring_out/">[For Hire] Questionably cheap writer whoring out services</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/379kb3/for_hire_physical_therapist_new_grad_nynj/">[for hire] physical therapist new grad NY/NJ</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/379n7f/hiring_remote_wordpress_developer/">[Hiring] (Remote) Wordpress Developer</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37anc3/hiring_php_html_developer_24hour_job_w_tinypass/">[HIRING] PHP + HTML Developer, 24-hour job /w TinyPass API</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/378ykt/for_hire_professional_british_voice_over_voice/">[For Hire] Professional British Voice Over & Voice Actor - Use my voice to promote your company, sell your product, advise your employees or help your customers!</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/379but/hiring_motion_graphics_editor_for_a_quick_preroll/">[HIRING] Motion graphics editor for a quick preroll</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37apop/for_hire_online_im_back_again_web/">[For Hire] (Online) I'm back again! Web developer/designer and SEO expert at your price!</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bhjw/for_hire_professional_freelance_writer_at_15100/">[For Hire] Professional freelance writer at $1.5/100 words</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37b3e1/for_hire_freelance_web_designer/">[For Hire] Freelance Web Designer</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bnvw/hiring_online_backend_web_developer_for_web/">[Hiring] (Online) Back-end Web Developer for Web Application Security</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37burr/for_hire_multidisciplinary_designer/">[For Hire] Multidisciplinary Designer (Brand/Web/Marketing)</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bv87/hiring_most_major_usa_cities_internal_audit_it/">[Hiring] (Most major USA cities) Internal Audit, IT Consulting, Risk and Compliance, Model Risk</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bvp0/for_hire_cartoon_and_cute_character_design/">[For Hire] Cartoon and Cute Character Design & Illustration</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bwbb/hiring_online_vietnamese_to_english/">[Hiring] (Online) Vietnamese to English translator/transcriber of a 1 hour video</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bapt/for_hire_freelance_android_developer_experience/">[For Hire] Freelance Android developer. Experience with REST client apps</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bdc2/for_hire_logo_design_illustration_web_design/">[For Hire] LOGO DESIGN / ILLUSTRATION / WEB DESIGN</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37as89/for_hire_print_designer_looking_for_small_gigs/">[For Hire] Print Designer looking for small gigs</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bj8y/for_hire_logo_designs_for_your_needs/">[For Hire] Logo Designs for Your Needs</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37b9vx/for_hire_native_android_developer_25h/">[For Hire] Native Android Developer, 25$/h</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37bm50/hiring_online_parttime_web_application_security/">[Hiring] (Online) Part-Time Web Application Security for Implementation of Vulnerabilities</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37btu0/for_hire_digital_artist/">[For Hire] Digital Artist!</a></li>
+<li><a href="http://www.reddit.com/r/forhire/comments/37b0cg/hiring_someone_with_photoshop_experience_who_can/">[Hiring] Someone with Photoshop experience who can remove the background and slightly retouch multiple photos</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37bn57/weekly_internship_advice_thread_may_26/">[Weekly] Internship advice thread - May 26</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37ance/why_was_a_masters_degree_in_cs_or_swe_the_right/">Why was a master's degree in CS (or SWE) the right decision for you (or not)?</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/378o8z/offered_a_job_through_internship_pay_seems_very/">Offered a job through Internship, Pay seems very very low, should I take it?</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37bp8b/how_do_i_avoid_becoming_a_code_monkey_especially/">How do I avoid becoming a "code monkey", especially after school is done?</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37bucx/advice_for_the_fundamentals_book/">Advice for the fundamentals book</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37buj9/online_ms_in_software_engineering_programs/">Online MS in Software Engineering Programs</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37a2rv/what_opportunities_do_dual_major_students_have/">What opportunities do dual major students have?</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37bxgx/help_quitting_a_fellowship_program_for_a_new_job/">Help - Quitting a Fellowship Program for a New Job</a></li>
+<li><a href="http://www.reddit.com/r/cscareerquestions/comments/37980n/need_advice_what_should_i_study_for_a_job_that/">(need advice) What should I study for a job that needs RDBMS if I already know SQL?</a></li>
+
+
+				
+				
+				
+				</ul>
+					 
+				</div>
+			</div>
+		</div>
+</div>
+
+
+
+
+</body>
+</html>

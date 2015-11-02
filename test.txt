@@ -1,0 +1,11 @@
+curl -u 'stephencurtin@hotmail.com:April1955#' https://api.feedbin.com/v2/authentication.json
+
+
+curl -u 'stephencurtin@hotmail.com:April1955#'  https://api.feedbin.com/v2/subscriptions.json
+
+
+
+curl -u 'stephencurtin@hotmail.com:April1955#'  https://api.feedbin.com/v2/entries.json
+
+curl -u 'stephencurtin@hotmail.com:April1955#' https://api.feedbin.com/v2/entries.json?since=2015-05-20T14:07:33.000000Z
+

@@ -1,0 +1,20 @@
+
+	$('.smarticker6').smarticker({
+		theme:'2',
+		shuffle:true,
+		imagesPath:'images',
+		rssFeed:'http://partner.mlb.com/partnerxml/gen/news/rss/sf.xml, \
+		http://mlb.mlb.com/partnerxml/gen/news/rss/atl.xml, \
+		http://mlb.mlb.com/partnerxml/gen/news/rss/mil.xml, \		
+		http://mlb.mlb.com/partnerxml/gen/news/rss/chc.xml, \
+		http://mlb.mlb.com/partnerxml/gen/news/rss/ari.xml, \
+		http://mlb.mlb.com/partnerxml/gen/news/rss/la.xml, \
+		http://mlb.mlb.com/partnerxml/gen/news/rss/mia.xml	,	
+		
+		//rssCats:'mlb.png,themeforest.png,graphicriver.png,graphicriver.png,activeden.png,3docean.png',
+		//rssSources:'Giantsrss.png,envato.png,envato.png,envato.png,envato.png,envato.png',
+		rssCats: 'Giants,Braves,Brewers,Cubs,Diamondbacks,Dodgers,Marlins',
+		rssSources: 'MLB, MLB, MLB, MLB, MLB, MLB, MLB' 
+		
+		//rssColors:'2980b9,8e44ad,27ae60,27ae60,c0392b,16a085'
+	});

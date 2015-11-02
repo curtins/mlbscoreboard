@@ -1,0 +1,347 @@
+<!doctype html>
+<html>
+<head>
+	<title>SmarTicker - a Smart jQuery Rss Feed Reader & News Ticker Plugin</title>
+	
+	<link rel="stylesheet" type="text/css" href="include/assets/google-code-prettify/prettify.css">
+	<link rel="stylesheet" type="text/css" href="include/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../demo/include/jquery.smarticker.css">
+</head>
+<body>
+	
+	<div class="top-bar">
+		<div class="border-bottom blue"></div>
+		<div class="border-bottom yellow"></div>
+		<div class="border-bottom green"></div>
+		<div class="border-bottom darkgreen"></div>
+		<div class="border-bottom darkblue"></div>
+		<div class="border-bottom red"></div>
+		<div class="border-bottom orange"></div>
+		<div class="border-bottom purple1"></div>
+	</div>
+
+	<div class="container">
+		<div class="header">
+			<h1>“SmarTicker”</h1>
+			<h5>a Smart jQuery Rss Feed Reader & News Ticker Plugin</h5>
+			<h6>“SmarTicker” Documentation By Meghdad Hadidi ver 1.5</h6>
+		</div>
+		<div class="content gray">
+			<div class="col col1 blue">
+				<div class="padding">
+					<div><strong>Created: </strong>2013/09/10</div>
+					<div><strong>Update: </strong>2014/04/20</div>
+					<div><strong>By: </strong>Meghdad Hadidi</div>
+					<div><strong>Email: </strong>meghdadhadidi1@gmail.com</div>
+					<div><strong>Website: </strong>powerup.ir</div>
+				</div>
+			</div>
+			<div class="col col2 right gray">
+				<div class="padding">
+					Thank you for purchasing <strong>SmarTicker</strong>. If you have any questions that are beyond the scope of this help file, please feel free to <strong>Email</strong> via my user page contact form <a href="http://codecanyon.net/user/meghdadhadidi">here</a>. You can also contact me from Contact page of my website, Add me as friend in <strong><a href="https://www.facebook.com/meghdad.hadidi">Facebook</a></strong>, or add to your <strong><a href="https://plus.google.com/u/0/114153466779559005508/posts/p/pub">Google+</a></strong> circles, Thanks so much!
+				</div>
+			</div>
+			<div class="cf"></div>
+		</div>
+		<div class="content border-top lightgray blue">
+			<div class="padding">
+				<h3>1. Create HTML Structure</h3>
+				<p>
+					Start with creating a <code>&lt;div&gt;</code> and set a class name for it, then create a <code>&lt;ul&gt;</code> element inside of <code>&lt;div&gt;</code> and insert your news items into <code>&lt;li&gt;</code> tags. See the example below:
+
+					<pre class="prettyprint lang-scm">
+&lt;div class="<strong>target</strong>"&gt;
+	&lt;ul&gt;
+		&lt;li&gt;&lt;a href="#"&gt;News item 1&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;News item 2&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;News item 3&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;News item 4&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href="#"&gt;News item 5&lt;/a&gt;&lt;/li&gt;
+		...
+	&lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+				</p>
+			</div>
+		</div>
+		<div class="content yellow border-top">
+			<div class="padding">
+				<h3>2. Include Css & Js Files</h3>
+				<p>SmarTicker needs <code>jQuery 1.8.2</code> and newer for best performance. This means using older jQuery plugin cause some SmarTicker features not work properly. You should also include <code>jquery.smarticker.js</code> file after jquery library. <br>I recommend that include js files at the end of document. Do this like example below:</p>
+				<pre class="prettyprint lang-scm">
+		...
+	&lt;/div&gt;
+	<strong>&lt;script type="text/javascript" src="../lib/jquery-1.10.2.min.js"&gt;&lt;/script&gt;</strong>
+	<strong>&lt;script type="text/javascript" src="jquery.smarticker.js"&gt;&lt;/script&gt;</strong>
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<p>The downloaded package contains .css file named <strong>"jquery.smarticker.css"</strong> too. You should include the css file in <code>&lt;head&gt;</code> element:
+				</p>
+				<pre class="prettyprint lang-scm">
+&lt;head&gt;
+	&lt;title&gt; Page Title &lt;/title&gt;
+
+	<strong>&lt;link href="jquery.smarticker.css" rel="stylesheet" type="text/css" /&gt;</strong>
+	...</pre>
+
+				
+			</div>
+		</div>
+
+
+		<div class="content lightgray border-top green">
+			<div class="padding">
+				<h3>3. Call SmarTicker</h3>
+				<p>
+					Now, you just need to call <code>smarticker()</code> method on target element. Do this at the end of HTML structure, where the <code> jquery.smarticker.js </code> file included.
+
+					<pre class="prettyprint lang-scm">
+		...
+	&lt;/div&gt;
+	
+	&lt;script type="text/javascript" src="../lib/jquery-1.10.2.min.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript" src="jquery.smarticker.js"&gt;&lt;/script&gt;
+	<strong>&lt;script type="text/javascript"&gt;
+	(function(){
+		$('.target').smarticker();
+	})();
+	&lt;/script&gt;</strong>
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+				</p>
+
+				<p>SmarTicker will start working, and the news items will change on 3 seconds timeouts.</p>
+
+				<div class="smarticker1">
+					<ul>
+						<li><a href="#">News Title 1</a></li>
+						<li><a href="#">News Title 2</a></li>
+						<li><a href="#">News Title 3</a></li>
+						<li><a href="#">News Title 4</a></li>
+						<li><a href="#">News Title 5</a></li>
+						<li><a href="#">News Title 6</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="content lightgray border-top orange">
+			<div class="padding">
+				<h3>4. Features</h3>
+				<h4>4.1. Category section</h4>
+				<p>
+					SmarTicker has a section named "Category". To use this section, just add a data attribute to your news item (<code>&lt;li&gt;</code> tag) like this:
+					<pre class="prettyprint lang-scm">
+&lt;li <strong>data-category="Yahoo News"</strong>&gt;&lt;a href="#"&gt;News item 1&lt;/a&gt;&lt;/li&gt;
+					</pre>
+				</p>
+
+
+				<h4>4.2. SubCategory section</h4>
+				<p>
+					SmarTicker also has a section named "SubCategory". To use this section, just add a data attribute to your news item ( <code>&lt;li&gt;</code> tag) like this:
+					<pre class="prettyprint lang-scm">
+&lt;li <strong>data-subcategory="Finance"</strong>&gt;&lt;a href="#"&gt;News item under finance category 1&lt;/a&gt;&lt;/li&gt;
+					</pre>
+				</p>
+
+				<h4>4.3. Category & SubCategory Together</h4>
+				<p>
+					You can user Category & SubCategory section together by setting data attribute for these to sections.
+				</p>
+				<pre class="prettyprint lang-scm">
+&lt;li data-category="Google News" data-subcategory="Finance"&gt;&lt;a href="#"&gt;News Item&lt;/a&gt;&lt;/li&gt;</pre>
+
+				<h4>4.4. Rainbow Magic</h4>
+				<p>
+					See Magic Of Colors. Your SmarTicker turned to a Rainbow.
+					If you want to use color animation on your SmarTicker, you must use a jquery color animate plugin like jQueryUI or jquery Color Animation by Edwin Martin that I included in the package.
+				</p>
+			
+				<p>
+					You can use this feature by creating a data attribute like this: <code>data-color</code>
+					for your <code>&lt;li&gt;</code> tags, and set color by hex codes as value. So, when SmarTicker scrolls to specified category, animates category and subcategory colors.
+				</p>
+				<pre class="prettyprint lang-scm small">
+&lt;li data-subcategory="Finance" data-category="Google News" <strong>data-color="14ab05"</strong>&gt;&lt;a href="#"&gt;World's cutest planes head West&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Sports" data-category="Yahoo News" <strong>data-color="f45151"</strong>&gt;&lt;a href="#"&gt;Rain pours on Murray US Open parade&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Money" data-category="Google News" <strong>data-color="23a0e8"</strong>&gt;&lt;a href="#"&gt;India rupee gains despite IMF bailout speculation&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Money" data-category="Usa Today" <strong>data-color="14ab05"</strong>&gt;&lt;a href="#"&gt;China firm poaches Google exec&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Sports" data-category="CNN News" <strong>data-color="cf29b9"</strong>&gt;&lt;a href="#"&gt;Brennan: Manziel suspension barely counts&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Tech" data-category="Fox News" <strong>data-color="1979ab"</strong>&gt;&lt;a href="#"&gt;Dell to Cut Some Jobs in Lone Star State&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Tech" data-category="Abc News" <strong>data-color="f45151"</strong>&gt;&lt;a href="#"&gt;Back to School Apps That Save Students Money&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Money" data-category="Usa Today" <strong>data-color="ed4c4c"</strong>&gt;&lt;a href="#"&gt;Will oil price rise choke off stock rally?&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Health" data-category="Abc News" <strong>data-color="cf29b9"</strong>&gt;&lt;a href="#"&gt;Pa. Girl Home After Controversial Lung Transplant&lt;/a&gt;&lt;/li&gt;
+&lt;li data-subcategory="Finance" data-category="Yahoo News" <strong>data-color="f45151"</strong>&gt;&lt;a href="#"&gt;Oil off highs, shares up on likely delay in Syria action&lt;/a&gt;&lt;/li&gt;
+				</pre>
+					<div class="smarticker5">
+					<ul>
+						<li data-subcategory="Finance" data-category="Google News" data-color="14ab05"><a href="#">World's cutest planes head West</a></li>
+						<li data-subcategory="Sports" data-category="Yahoo News" data-color="f45151"><a href="#">Rain pours on Murray US Open parade</a></li>
+						<li data-subcategory="Money" data-category="Google News" data-color="23a0e8"><a href="#">India rupee gains despite IMF bailout speculation</a></li>
+						<li data-subcategory="Money" data-category="Usa Today" data-color="14ab05"><a href="#">China firm poaches Google exec</a></li>
+						<li data-subcategory="Sports" data-category="CNN News" data-color="cf29b9"><a href="#">Brennan: Manziel suspension barely counts</a></li>
+						<li data-subcategory="Tech" data-category="Fox News" data-color="1979ab"><a href="#">Dell to Cut Some Jobs in Lone Star State</a></li>
+						<li data-subcategory="Tech" data-category="Abc News" data-color="f45151"><a href="#">Back to School Apps That Save Students Money</a></li>
+						<li data-subcategory="Money" data-category="Usa Today" data-color="ed4c4c"><a href="#">Will oil price rise choke off stock rally?</a></li>
+						<li data-subcategory="Health" data-category="Abc News" data-color="cf29b9"><a href="#">Pa. Girl Home After Controversial Lung Transplant</a></li>
+						<li data-subcategory="Finance" data-category="Yahoo News" data-color="f45151"><a href="#">Oil off highs, shares up on likely delay in Syria action</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="content lightgray border-top orange">
+			<div class="padding">
+				<h3>5. Add Rss Feed </h3>
+					<pre class="prettyprint lang-scm small">
+$('.smarticker6').smarticker({
+	theme: 2,
+	animation: 'fade',
+	controllerType: 2,
+	rssFeed: 'http://rss.cnn.com/rss/edition.rss,http://feeds.bbci.co.uk/news/world/europe/rss.xml',
+	rssSources: 'CNN,BBC',
+	rssCats: 'Top Stories, Europe',
+	rssColors: '18bc4e,f67414',
+	rssLimit:3,
+	speed: 1500
+});
+					</pre>
+					<div class="smarticker6">
+						<ul>
+						</ul>
+					</div>
+
+					<p>
+						You can use image instead of Category and SubCategory name, just add image Name or Url in <code>rssCats</code> or <code>rssSources</code> option like this:
+					</p>
+					<pre class="prettyprint lang-scm small">
+$('.smarticker6').smarticker({
+	...
+	rssCats: '<strong>http://yourdomain.com/imagepath/topstories.png</strong>, <strong>http://yourdomain.com/imagepath/europe.jpg</strong>',
+	...
+});
+					</pre>
+					<p>
+						if images URL are same, you can set another option named <code>imagesPath</code> to url of where your images located:
+					</p>
+					<pre class="prettyprint lang-scm small">
+$('.smarticker6').smarticker({
+	...
+	rssCats: '<strong>topstories.png</strong>, <strong>europe.jpg</strong>',
+	imagesPath: 'http://yourdomain.com/imagepath/'
+	...
+});						
+					</pre>
+			</div>
+		</div>
+
+		
+
+		<div class="content lightgray border-top purple">
+			<div class="padding">
+				<h3>6. Options</h3>
+				<p>
+					You can change default setting to what you want.<br/>Some default options:
+					<pre class="prettyprint lang-scm small">
+$('.target').smarticker({
+	theme: 1, 				// Defines SmarTicker Style: 1, 2, 3, 4 ...
+					direction: 'ltr',
+					layout: 'horizontal',
+					animation: 'default',	// Defines transition of news titles: default, fade, slide, ...
+					speed: 1000,			// Defines speed of transition for subcategory, category and news
+					startindex: 0,			// Starter index
+					pausetime: 3000,		// Pause time on each news
+					rounded: false,			// Add border radius to parent node
+					shadow: true,			// Add box-shadow to parent node
+					border: false,			// Add 1px solid border to parent node
+					category: true,			// If change this to false, the Category section will not be created
+					subcategory: true,		// If change this to false, the Subcategory section will not be created
+					titlesection: true,		// Define a title section before news title section
+					title: 'Headlines',		// When category and subcategory not available this section will show
+					progressbar: false,		// Add a progress bar
+					catcolor: true,			// Animate category section background color
+					subcatcolor: true,		// Animate sub category section background color
+					shuffle:false,			// Shuffles news titles sort order
+					rssFeed: '',			// Set your rss feed here and seperate theme with ","
+					rssLimit: 10,			// Limit Rss feed
+					rssCats: '',			// Set Rss Feed categories comma seperated
+					rssSources: '',			// Set Rss Feed Source name comma seperated
+					rssColors: '',			// Set color for any rss feed and seperate theme with Comma ","
+					showDate:false,			// If this be true, the date will show after news title
+					googleApi:true,			// Let Google API parse your rss feed
+					feedLoader:'',			// You can use in-built rssloader.php, Upload the file and set url here
+					feedsOrder:'older',		// Change sort order of news titles
+					linkTarget:'_blank',	// target of the news title links
+					controllerType: false,	// Change controller panel themes
+					googleFont: true,		// If true, the google font will apply
+					imagesPath:'',			// the path of images that may be used in rssCats or rssSources
+					developerMode: false	// If this be true, You can see some logs in console
+});
+					</pre>
+
+				</p>
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="padding">
+				SmarTicker &copy  All rights resrved to Meghdad Hadidi - <a href="http://powerup.ir">PowerUp Team</a>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript" src="../lib/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="include/assets/google-code-prettify/prettify.js"></script>
+	<script type="text/javascript" src="include/assets/js/jquery.scrollNav.js"></script>
+	<script type="text/javascript" src="../demo/include/jquery.smarticker.min.js"></script>
+	<script type="text/javascript" src="../asset/jquery.animate.colors.min.js"></script>	
+	<script type="text/javascript">
+	$('.smarticker1').smarticker();
+
+	$('.smarticker2').smarticker();
+
+	$('.smarticker3').smarticker();
+
+	$('.smarticker4').smarticker();
+
+	$('.smarticker5').smarticker();
+
+	$('.smarticker6').smarticker({
+		theme: 2,
+		animation: 'fade',
+		controllerType: 2,
+		rssFeed: 'http://rss.cnn.com/rss/edition.rss,http://feeds.bbci.co.uk/news/world/europe/rss.xml',
+		rssSources: 'CNN,BBC',
+		rssCats: 'Top Stories, Europe',
+		rssColors: '18bc4e,f67414',
+		rssLimit:3,
+		speed: 1500
+	});
+
+
+	$('.container').scrollNav({
+	    sections: 'h3',
+	    titleText: false,
+	    fixedMargin: 10,
+	    animated: true,
+	    speed: 500,
+	    showHeadline: false,
+	    showTopLink: false,
+	    topLinkText: 'Top',
+	    insertLocation: 'appendTo',
+	    insertTarget: 'body',
+	    arrowKeys: true
+	});
+
+	$(document).ready(function(){
+		prettyPrint();
+	})
+	</script>
+</body>
+</html>

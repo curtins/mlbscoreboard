@@ -1,0 +1,68 @@
+{
+    "name": "TwitterLinks",
+	
+    
+       
+        "link1": {
+            "url": "https://twitter.com/craigcalcaterra",
+            "display": "@craigcalcaterra" 
+          
+        },
+		
+		 "link2": {
+            "url": "https://twitter.com@Ken_Rosenthal",
+            "display": "@Ken_Rosenthal" 
+          
+        }, 
+		
+		 "link3": {
+            "url": "https://twitter.com/jay_jaffe",
+            "display": "@jay_jaffe" 
+          
+        },
+		
+		 "link4": {
+            "url": "https://twitter.com/CrashburnAlley",
+            "display": "@CrashburnAlley" 
+          
+        }, 
+		
+		 "link5": {
+            "url": "https://twitter.com/TylerKepner",
+            "display": "@TylerKepner" 
+          
+        },
+		
+		 "link6": {
+            "url": "https://twitter.com/Soxlunch",
+            "display": "@Soxlunch" 
+          
+        }, 
+		
+		 "link7": {
+            "url": "https://twitter.com/@jonmorosi",
+            "display": "@jonmorosi" 
+          
+        },
+		
+		 "link8": {
+            "url": "https://twitter.com/JeffPassan",
+            "display": "@JeffPassan" 
+          
+        } ,
+		
+		 "link9": {
+            "url": "https://twitter.com/djshort",
+            "display": "@djshort" 
+          
+        },
+		
+		 "link10": {
+            "url": "https://twitter.com/jonahkeri ",
+            "display": "@jonahkeri" 
+          
+        }  
+		 
+      
+    
+}

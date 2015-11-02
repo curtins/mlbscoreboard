@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<meta http-equiv="refresh" content="1000">
+
+    <title>My MLB</title>
+
+     
+
+    <!-- Custom CSS -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+	
+	
+	<!-- Bootstrap Core JavaScript -->
+    <link  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"  rel="stylesheet">
+	<link  href="css/application.css"  rel="stylesheet">
+	 
+	
+	
+	<script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	 
+	 
+	 
+	<!-- Start ticker assets code -->
+	<!-- For more information about the assets code and how to customize it, see chapter "4.2.1. The assets code" of the guide. -->
+	<link href="modern-ticker/css/modern-ticker.css" type="text/css" rel="stylesheet">
+	<link href="modern-ticker/themes/theme1/theme.css" type="text/css" rel="stylesheet">
+	<script src="modern-ticker/js/jquery.modern-ticker.min.js" type="text/javascript"></script>
+	<script type="text/javascript"  src="js/datecalculations.js"></script>
+	<script src="js/moment.js?v=1.14"></script>
+	<script src="js/application.js"></script>
+	<!-- End ticker assets code -->
+	
+	<!-- bxSlider CSS file -->
+	<script type="text/javascript" src="../js/jquery.bxslider.js"></script>
+    <link href="css/jquery.bxslider.css" type="text/css" rel="stylesheet" />
+	 
+	
+	
+	<script type="text/javascript" language="javascript">
+     $(document).ready(function() { 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 var strFileName;
+	 strFileName="files/json/redsoxblogs.json";	 
+	 GetColumn(strFileName,"#grp1");
+	 
+	 strFileName="files/json/redsoxtwitter.json";	 
+	 GetColumn(strFileName,"#grp2");
+	 
+	 strFileName="files/json/stadiums.json";	 
+	 GetColumn(strFileName,"#grp3");
+	 
+	 strFileName="files/json/alltwitter.json";	 
+	 GetColumn(strFileName,"#grp4");
+	 
+	 function GetColumn(FileName, column) {
+	 
+		  $.getJSON(FileName, function(result)
+		  
+			{
+				var strURL1;
+				var strURL2;
+				 
+				$.each(result, function(i, item) {
+				
+					strURL1 = item.url;
+					strURL2 = "</li><a href="  + strURL1  + "   class=list-group-item  target=_blank >" + item.display +"</a></li>";
+					if (i != 'name') {
+						$( column ).append( strURL2 );
+					 };
+				});
+			
+			
+			  
+		});
+		
+		}
+		
+		
+	});
+	/////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+var urls= [];
+var dates=[];
+var html=[];
+var loop = 0;
+var ctr = 0;
+var weekTotal="";
+
+ 
+
+
+//GetRSS();
+
+for (loop = 0; loop < 1; loop++) { 
+
+     
+
+
+	 var strp = Back_date(loop);
+	 var smonth=strp.substring(0,2);
+	 var sday=strp.substring(4,2);
+	
+	var a="http://gd2.mlb.com/components/game/mlb/year_2015/month_";
+	
+	
+	
+    var c="/day_";
+	
+	
+    var d="/master_scoreboard.json";
+    var c1=sday;
+    var d2=" >/dev/null 2>&1";
+    var e =  a.concat(smonth,c,c1,d);
+	
+	urls[loop]=e;
+	
+		
+	 
+	
+	dates[loop]=smonth + '/' + sday;
+	 
+	
+	
+	
+	
+}
+
+/*
+
+$("#tab-a").text(dates[0]);
+$("#tab-b").text(dates[1]);
+$("#tab-c").text(dates[2]);
+$("#tab-d").text(dates[3]);
+$("#tab-e").text(dates[4]);
+$("#tab-f").text(dates[5]);
+$("#tab-g").text(dates[6]);
+	
+*/
+
+for (loop1 = 0; loop1 < 7; loop1++) { 
+    GetHTML(urls[loop1], loop1);
+}
+ 	
+function GetHTML (passValue,ctr) {
+
+
+$.getJSON(passValue, function(data) { 
+
+itrHTML=""; ftrHTML="";  xtrHTML="";
+
+ftrHomeInnings="";
+ftrAwayInnings="";
+
+strDate=data.subject;
+
+ 
+
+//Loop Thru JSON
+$.each(data.data.games.game, function() {	
+
+ 
+	// MLB Final Game Data Extraction
+
+	if (this.status.status == 'Final' || this.status.status == 'Game Over'   )
+
+		{	
+		
+			ftrHomeInnings="";
+			ftrAwayInnings="";
+		
+		
+			for (var i = 0; i < this.linescore.inning.length; i++) 
+			
+			{
+				if(this.linescore.inning[i].home != undefined)	{
+					ftrHomeInnings+="&nbsp;" + this.linescore.inning[i].home + "&nbsp;"; 
+				}
+				
+				if(this.linescore.inning[i].away != undefined)	{
+					ftrAwayInnings+="&nbsp;" + this.linescore.inning[i].away + "&nbsp;"; 
+				}
+			}
+		 
+		
+		ftrHTML+="<li><table  ><tr>";
+		
+		ftrHTML+="<td>" + this.status.status + ":</td>";
+		ftrHTML+="<td>" + this.venue + "</td>";
+		ftrHTML+="<td>" + dates[ctr] + "</td>";
+		ftrHTML+="<td colspan='3'>&nbsp;</td>";
+		ftrHTML+="</tr><tr>";  
+		
+		
+		
+		ftrHTML+="<td><img src='/images/" + this.home_team_name + ".png'" + " width='40' height='40' alt='' />&nbsp;&nbsp;(" + this.home_win + "-" + this.home_loss + ")</td>";
+		ftrHTML+="<td>" + ftrHomeInnings  + "</td>";
+		ftrHTML+="<td>("+ this.linescore.r.home;  
+		ftrHTML+=" - "+ this.linescore.h.home;  
+		ftrHTML+=" - "+ this.linescore.e.home + ")</td>";  
+		ftrHTML+="</tr><tr>";  
+		
+		
+		 
+	 
+		ftrHTML+="<td><img src='/images/" + this.away_team_name + ".png'" + " width='40' height='40' alt='' />&nbsp;&nbsp;(" + this.away_win + "-" + this.away_loss + ")</td>";
+		ftrHTML+="<td>" + ftrAwayInnings  + "</td>";
+		ftrHTML+="<td>("+ this.linescore.r.away;  
+		ftrHTML+=" - "+ this.linescore.h.away;  
+		ftrHTML+=" - "+ this.linescore.e.away + ")</td>";  
+		ftrHTML+="</tr><tr>";  
+		
+		 
+		
+		//ftrHTML+="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";  
+		ftrHTML+="<td>&nbsp;</td><td>Losing Pitcher: " + this.losing_pitcher.name_display_roster;  
+		ftrHTML+="(" + this.losing_pitcher.wins;  
+		ftrHTML+="-" + this.losing_pitcher.losses + ")</td>";  
+		
+		ftrHTML+="<td>Winning Pitcher: " + this.winning_pitcher.name_display_roster;  
+		ftrHTML+="&nbsp;(" + this.winning_pitcher.wins;  
+		ftrHTML+="-" + this.winning_pitcher.losses + ")</td>";  
+		ftrHTML+="<td>&nbsp;</td>";
+		ftrHTML+="</tr></table></li>";
+		}
+ 
+/*		
+	// Game In Progress  
+	if (this.status.status == 'In Progress' || (this.status.status.indexOf("Delayed") > -1)) {
+		
+		
+		ftrHomeInnings="";
+		ftrAwayInnings="";
+	
+	
+		for (var i = 0; i < this.linescore.inning.length; i++) 
+		
+		{
+			if(this.linescore.inning[i].home != undefined)	{
+				ftrHomeInnings+="&nbsp;" + this.linescore.inning[i].home + "&nbsp;"; 
+			}
+			
+			if(this.linescore.inning[i].away != undefined)	{
+				ftrAwayInnings+="&nbsp;" + this.linescore.inning[i].away + "&nbsp;"; 
+			}
+		}
+		
+		
+		itrHTML+="<li><table class='table   table-responsive'><tr>";
+		itrHTML+="<td>" + this.status.status + ":</td>";
+		itrHTML+="<td>" + this.venue + "</td>";
+		itrHTML+="<td>" + dates[ctr] + "</td>";
+		itrHTML+="<td colspan='3'>&nbsp;</td>";
+		 
+		itrHTML+="</tr><tr>";
+		itrHTML+="<td><img src='/images/" + this.away_team_name + ".png'" + " width='35' height='35' alt='' /></td>";	
+		itrHTML+="<td>" + this.opposing_pitcher.last + ",";
+		itrHTML+="    " + this.opposing_pitcher.first + "&nbsp;";
+		itrHTML+="&nbsp;(" + this.opposing_pitcher.wins + " -";
+		itrHTML+=" "     + this.opposing_pitcher.losses + ")</td>";
+		itrHTML+="<td>" + this.opposing_pitcher.era + "</td>";
+		itrHTML+="<td>" + ftrAwayInnings  + "</td>";
+		itrHTML+="<td>("+ this.linescore.r.away;  
+		itrHTML+="-"+ this.linescore.h.away;  
+		itrHTML+="-"+ this.linescore.e.away + ")</td>";  
+		itrHTML+="</tr><tr>";
+		itrHTML+="<td><img src='/images/" + this.home_team_name + ".png'" + " width='35' height='35' alt='' /></td>";	
+		itrHTML+="<td>" + this.pitcher.last + ",";
+		itrHTML+="    " + this.pitcher.first + "&nbsp;";
+		itrHTML+="&nbsp;(" + this.pitcher.wins + " -";
+		itrHTML+=" "     + this.pitcher.losses + ")</td>";
+		itrHTML+="<td>" + this.pitcher.era + "</td>";
+		itrHTML+="<td>" + ftrHomeInnings  + "</td>";
+		itrHTML+="<td>("+ this.linescore.r.home;  
+		itrHTML+="-"+ this.linescore.h.home;  
+		itrHTML+="-"+ this.linescore.e.home + ")</td>";  
+		itrHTML+="</tr></table><li>";
+		//itrHTML+="<td>ftrHTML+='<td>Winning Pitcher: ' + this.winning_pitcher.name_display_roster";  
+		//itrHTML+="&nbsp;(' + this.winning_pitcher.wins ";  
+		//itrHTML+="-' + this.winning_pitcher.losses + ')</td>";  
+		//itrHTML+="</tr></li><td><font color='red'>" + this.alerts.text  + "</font></td></tr></table></li>";
+	 
+		
+	}
+
+ */
+
+	
+	// MLB Pre Game Data Extraction
+	if (this.status.status == 'Preview' || this.status.status == 'Pre-Game'   )
+
+		{	
+		
+		xtrHTML+="<li><table class='table  table-responsive'><tr>";
+		xtrHTML+="<td><strong>" + this.status.status + ":</strong></td>";
+		xtrHTML+="<td><strong>" + this.venue + "</strong></td>";
+		xtrHTML+="<td><strong>" + this.time + "</strong></td>";
+		xtrHTML+="<td><strong>" + dates[ctr] + "</strong></td>";
+		
+		xtrHTML+="<td colspan='3'>&nbsp;</td>";
+		xtrHTML+="</tr><tr>";
+		xtrHTML+="<td><img src='/images/" + this.away_team_name + ".png'" + " width='40' height='40' alt='' /></td>";	
+		xtrHTML+="<td class='text-left'>" + this.away_probable_pitcher.last_name + ",";
+		xtrHTML+="    " + this.away_probable_pitcher.first_name + "&nbsp;";
+		xtrHTML+="&nbsp;(" + this.away_probable_pitcher.wins + " -";
+		xtrHTML+=" "     + this.away_probable_pitcher.losses + ")</td>";
+		xtrHTML+="<td>" + this.away_probable_pitcher.era + "</td>";
+		xtrHTML+="<td>&nbsp;</td>";
+		
+		xtrHTML+="<td><img src='/images/" + this.home_team_name + ".png'" + " width='40' height='40' alt='' /></td>";	
+		xtrHTML+="<td>" + this.home_probable_pitcher.last_name + ",";
+		xtrHTML+="    " + this.home_probable_pitcher.first_name + "&nbsp;";
+		xtrHTML+="&nbsp;(" + this.home_probable_pitcher.wins + " -";
+		xtrHTML+=" "     + this.home_probable_pitcher.losses + ")</td>";
+		xtrHTML+="<td>" + this.home_probable_pitcher.era + "</td>";
+		//xtrHTML+="<tr><td colspan='7'>&nbsp;</td></tr>";
+		xtrHTML+="</tr></table></li>";
+		
+		}
+		
+		
+		
+		
+		
+		
+		//console.log(xtrHTML);
+		//console.log(itrHTML);
+		//console.log(itrHTML);
+
+		
+}); // $.each(data.data.games.game, function() {	
+
+    
+
+	$('.bxslider').append(itrHTML+ftrHTML+xtrHTML);	
+	
+	 $('.bxslider').bxSlider({
+	      
+		    controls: false,
+            auto: true,
+            autoHover: true,
+            minSlides: 1,
+            maxSlides: 1,
+            //adaptiveHeight: true,
+            slidewidth: 200,
+            slideMargin: 2});
+		 
+
+    
+
+	 
+	 //console.log(itrHTML+ftrHTML+xtrHTML);
+	/*
+	switch (ctr) {
+		
+    case 0:
+        $('.scores1').append(itrHTML+ftrHTML+xtrHTML);	
+		
+		
+        break;
+    case 1:
+	
+		//console.log("1" + itrHTML+ftrHTML+xtrHTML);
+	
+	
+	
+        $('.started1').append(itrHTML+ftrHTML+xtrHTML);	
+        break;
+    case 2:
+       $('.started2').append(itrHTML+ftrHTML+xtrHTML);	
+        break;
+    case 3:
+        $('.started3').append(itrHTML+ftrHTML+xtrHTML);	
+        break;
+    case 4:
+       $('.started4').append(itrHTML+ftrHTML+xtrHTML);	
+        break;
+    case 5:
+		$('.started5').append(itrHTML+ftrHTML+xtrHTML);	 
+        break;
+    case 6:
+        $('.started6').append(itrHTML+ftrHTML+xtrHTML);			
+        break;
+	 
+}
+
+	
+	// Game Final
+	$('#slider').vTicker('init', {speed: 2000, 
+	pause: 3000,
+	showItems: 1,
+	height: 175,
+	padding:5}); 
+	
+	 
+	
+	
+	$('#slider1').vTicker('init', {speed: 2000, 
+	pause: 3000,
+	showItems: 1,
+	height: 160,
+	padding:5}); 
+	
+	
+	$('#slider2').vTicker('init', {speed: 3000, 
+	pause: 3000,
+	showItems: 1,
+	height: 210,
+	padding:5}); 
+	
+	
+	$('#slider3').vTicker('init', {speed: 3000, 
+	pause: 3000,
+	showItems: 1,
+	height: 210,
+	padding:5});
+
+	
+	$('#slider4').vTicker('init', {speed: 3000, 
+	pause: 3000,
+	showItems: 1,
+	height: 210,
+	padding:5});
+	
+	
+	$('#slider5').vTicker('init', {speed: 3000, 
+	pause: 3000,
+	showItems: 1,
+	height: 210,
+	padding:5});
+	
+	 
+	$('#slider6').vTicker('init', {speed: 3000, 
+	pause: 3000,
+	showItems: 1,
+	height: 210,
+	padding:5});
+	
+	   
+	
+	  $(".modern-ticker").modernTicker({
+                effect: "scroll",
+                scrollType: "continuous",
+                scrollStart: "inside",
+                scrollInterval: 200,
+                transitionTime: 500,
+                linksEnabled: true,
+                pauseOnHover: true,
+                autoplay: true,
+                feedType: "rss-atom",
+                //feedUrl: "rss/example.rss",
+                //feedUrl: "http://mlb.mlb.com/partnerxml/gen/news/rss/mlb.xml",
+				feedUrl: "http://sportspyder.com/teams/boston-red-sox/news.xml",
+				//http://partner.mlb.com/partnerxml/gen/news/rss/bos.xml
+                loadType: "process",
+                feedCount: 0,
+                linkTarget: "_blank",
+                refresh: "10:00"
+            });
+			
+			
+		 $(".modern-ticker").modernTicker({
+			effect: "scroll",
+			scrollType: "continuous",
+			scrollStart: "inside",
+			scrollInterval: 200,
+			transitionTime: 500,
+			linksEnabled: true,
+			pauseOnHover: true,
+			autoplay: true,
+			feedType: "rss-atom",
+			//feedUrl: "rss/example.rss",
+			//feedUrl: "http://mlb.mlb.com/partnerxml/gen/news/rss/mlb.xml",
+			feedUrl: "http://rss.nytimes.com/services/xml/rss/nyt/Baseball.xml",
+			//http://partner.mlb.com/partnerxml/gen/news/rss/bos.xml
+			loadType: "process",
+			feedCount: 0,
+			linkTarget: "_blank",
+			refresh: "10:00"
+		});
+			
+		*/
+		 
+		 
+		  $(".modern-ticker").modernTicker({
+			effect: "scroll",
+			scrollType: "continuous",
+			scrollStart: "inside",
+			scrollInterval: 30 ,
+			transitionTime: 200,
+			linksEnabled: true,
+			pauseOnHover: true,
+			autoplay: true,
+			feedType: "rss-atom",
+			//feedUrl: "../rss/example.rss",
+			feedUrl: "http://mlb.mlb.com/partnerxml/gen/news/rss/mlb.xml",
+			//feedUrl: "http://rss.nytimes.com/services/xml/rss/nyt/Baseball.xml",
+			//http://partner.mlb.com/partnerxml/gen/news/rss/bos.xml
+			loadType: "process",
+			feedCount: 0,
+			linkTarget: "_blank",
+			refresh: "10:00"
+			});
+     
+		  
+	
+	
+}); // function GetHTML (passValue) 
+
+} //GetHtml Function
+	
+	
+ 
+     </script> 
+
+     
+	 
+	
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Home</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+	
+	
+	
+		 <!-- Ticker -->
+        <div class="row">
+		
+			<div class="modern-ticker mt-round  col-lg-offset-1 col-lg-10 text-center">
+				<div class="mt-body">
+					<div class="mt-label">NEWS:</div>
+					<div class="mt-news">
+						<ul></ul>
+					</div>
+					<div class="mt-controls">
+						<div class="mt-prev"></div>
+						<div class="mt-play"></div>
+						<div class="mt-next"></div>
+					</div>
+				</div>
+			</div> 
+		
+		</div>
+		
+		<br>
+	
+		<ul class="bxslider"></ul> 
+	    
+		 
+	
+	
+
+        <!-- Jumbotron Header
+        <header class="jumbotron hero-spacer">
+            <ul class="list-group">
+				    <a href="#" class="list-group-item">First item</a>
+					<a href="#" class="list-group-item">Second item</a>
+					<a href="#" class="list-group-item">Third item</a>
+				</ul>
+        </header>
+		
+		 
+
+          
+		
+		
+		
+		
+		
+
+        <!-- Title -->
+        <div class="row text-center">
+		
+		
+            <div class="col-md-3 col-sm-6 hero-feature toolbar"  >
+                <h4>Red Sox - Blogs</h4> 
+            </div>
+			
+			 <div class="col-md-3 col-sm-6 hero-feature toolbar"  >
+                <h4>Red Sox - Twitter</h4> 
+            </div>
+			
+			<div class="col-md-3 col-sm-6 hero-feature toolbar"  >
+                <h4>Baseball Stadiums</h4> 
+            </div>
+			
+			<div class="col-md-3 col-sm-6 hero-feature toolbar"  >
+                <h4>MLB - Twitter </h4> 
+            </div>
+			
+        </div>
+        <!-- /.row -->
+
+        <!-- Page Features -->
+        <div class="row text-center">
+		
+            <div class="col-md-3 col-sm-6 hero-feature">
+				<ul class="list-group" id = "grp1">
+				</ul>		 
+            </div>
+            <div class="col-md-3 col-sm-6 hero-feature">
+				<ul class="list-group" id="grp2">				    
+				</ul>			 
+            </div>
+            <div class="col-md-3 col-sm-6 hero-feature">
+				<ul class="list-group" id="grp3">
+				</ul>
+            </div>
+            <div class="col-md-3 col-sm-6 hero-feature">
+				<ul class="list-group" id="grp4">
+				</ul>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><i>Data courtesy of MLB Baseball</i></p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+     
+	
+	
+	
+	 
+	
+	
+	
+	
+
+    
+
+</body>
+
+</html>

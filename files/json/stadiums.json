@@ -1,0 +1,66 @@
+{
+    "name": "ParkLinks",
+	
+        "link1": {
+            "url": "http://baseballstadiumreviews.com/",
+            "display": "Baseball Stadium Review" 
+          
+        },
+		
+		 "link2": {
+            "url": "http://www.ballparksofbaseball.com/",
+            "display": "Ball Parks of Baseball" 
+          
+        }, 
+		
+		 "link3": {
+            "url": "http://www.baseball-almanac.com/stadium.shtml",
+            "display": "Baseball Almanac" 
+          
+        },
+		
+		 "link4": {
+            "url": "http://www.baseballparks.com/",
+            "display": "Baseball Parks" 
+          
+        }, 
+		
+		 "link5": {
+            "url": "http://baseballstadiums.net/",
+            "display": "Baseball Stadiums" 
+          
+        },
+		
+		 "link6": {
+            "url": "http://www.ballparksofbaseball.com/FutureBallparks.htm",
+            "display": "Future Ball Parks" 
+          
+        }, 
+		
+		 "link7": {
+            "url": "http://athlonsports.com/mlb/ranking-best-and-worst-mlb-ballparks-2014",
+            "display": "Best / Worst Ball Parks" 
+          
+        },
+		
+		 "link8": {
+            "url": "http://www.ballparksofbaseball.com/PastOne.htm",
+            "display": "Ball Parks of Old" 
+          
+        } ,
+		
+		 "link9": {
+            "url": "http://www.vintageballparks.com/",
+            "display": "Vintage Ball Parks" 
+          
+        },
+		
+		 "link10": {
+            "url": "http://www.andrewclem.com/Baseball/Dimensions.html",
+            "display": "Ball Park Dimensions" 
+          
+        }  
+		 
+      
+    
+}

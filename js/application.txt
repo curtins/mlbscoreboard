@@ -1,0 +1,2 @@
+rssCats: 'Giants,Braves,Brewers,Cubs,Diamondbacks,Dodgers,Marlins',
+		rssSources: 'MLB, MLB, MLB, MLB, MLB, MLB, MLB' 
